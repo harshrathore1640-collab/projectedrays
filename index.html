@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projected Rays | Award-Winning Architecture & Interior Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            900: '#0a0a0a',
+                            800: '#121212',
+                            700: '#1c1c1c',
+                            600: '#2b2b2b',
+                            gold: '#D4AF37',
+                            'gold-light': '#F3E5AB',
+                            'gold-dark': '#AA7C11'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b2b2b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+        }
+        .glass-card {
+            background: rgba(28, 28, 28, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .floating-pulse {
+            animation: pulse-ring 2.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-luxury-900 text-gray-100 font-sans antialiased selection:bg-luxury-gold selection:text-black">
+
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-luxury-950/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full border border-luxury-gold flex items-center justify-center bg-luxury-800 text-luxury-gold font-serif font-bold text-xl group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
+                    PR
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-serif font-bold tracking-wider text-white">PROJECTED RAYS</span>
+                    <span class="block text-[10px] tracking-widest text-luxury-gold uppercase">Architecture & Interiors</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#about" class="hover:text-luxury-gold transition duration-200">About</a>
+                <a href="#services" class="hover:text-luxury-gold transition duration-200">Services</a>
+                <a href="#portfolio" class="hover:text-luxury-gold transition duration-200">Portfolio</a>
+                <a href="#why-us" class="hover:text-luxury-gold transition duration-200">Why Us</a>
+                <a href="#testimonials" class="hover:text-luxury-gold transition duration-200">Testimonials</a>
+                <a href="#faq" class="hover:text-luxury-gold transition duration-200">FAQ</a>
+                <a href="#contact" class="hover:text-luxury-gold transition duration-200">Contact</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="tel:9888885237" class="px-5 py-2.5 rounded-full border border-luxury-gold text-luxury-gold text-xs font-semibold tracking-widest uppercase hover:bg-luxury-gold hover:text-black transition duration-300">
+                    <i class="fa-solid fa-phone mr-2"></i> +91 98888 85237
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-toggle" class="md:hidden text-2xl text-luxury-gold focus:outline-none p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-luxury-900 border-b border-white/10 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-lg hover:text-luxury-gold mobile-nav-link">About</a>
+            <a href="#services" class="block text-lg hover:text-luxury-gold mobile-nav-link">Services</a>
+            <a href="#portfolio" class="block text-lg hover:text-luxury-gold mobile-nav-link">Portfolio</a>
+            <a href="#why-us" class="block text-lg hover:text-luxury-gold mobile-nav-link">Why Us</a>
+            <a href="#testimonials" class="block text-lg hover:text-luxury-gold mobile-nav-link">Testimonials</a>
+            <a href="#faq" class="block text-lg hover:text-luxury-gold mobile-nav-link">FAQ</a>
+            <a href="#contact" class="block text-lg hover:text-luxury-gold mobile-nav-link">Contact</a>
+            <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+                <a href="tel:9888885237" class="w-full text-center py-3 rounded-xl bg-luxury-gold text-black font-bold uppercase tracking-wider text-xs">
+                    <i class="fa-solid fa-phone mr-2"></i> Call: +91 98888 85237
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center justify-center hero-bg pt-20">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 py-24">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-luxury-700/80 border border-luxury-gold/40 text-luxury-gold text-xs font-semibold tracking-widest uppercase mb-8 shadow-2xl">
+                <i class="fa-solid fa-award"></i> Award-Winning Architecture & Interior Firm
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-white tracking-tight leading-tight mb-6">
+                Shaping Spaces with <span class="gold-gradient-text">Concept & Articulation</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Founded by <strong class="text-white font-medium">Ar. Rohan Jain</strong>, Projected Rays crafts sublime architectural masterpieces and bespoke interiors defined by meticulous material depth and timeless elegance.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full gold-gradient-bg text-black font-bold text-sm tracking-wider uppercase shadow-xl hover:opacity-90 transition duration-300">
+                    Explore Masterpieces
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/30 text-white font-semibold text-sm tracking-wider uppercase hover:bg-white hover:text-black transition duration-300">
+                    Schedule Consultation
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-white/10 text-center">
+                <div class="glass-card p-6 rounded-2xl">
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-luxury-gold mb-1">12+</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">Years of Excellence</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-luxury-gold mb-1">150+</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">Projects Delivered</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-luxury-gold mb-1">18</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">Design Awards</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-luxury-gold mb-1">100%</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-luxury-800 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border border-luxury-gold/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80" alt="Ar. Rohan Jain Interior Design" class="w-full h-[500px] object-cover hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-luxury-gold/10 rounded-full blur-3xl -z-0"></div>
+                    <div class="absolute -top-6 -left-6 glass-card p-6 rounded-2xl z-20 shadow-2xl border-l-4 border-l-luxury-gold max-w-xs hidden sm:block">
+                        <p class="text-xs italic text-gray-300">"Architecture is not just about building walls; it is about choreographing light, emotion, and materiality into living art."</p>
+                        <span class="block mt-2 text-luxury-gold text-xs font-bold uppercase tracking-wider">— Ar. Rohan Jain</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-700 rounded-full border border-luxury-gold/20">The Visionary Firm</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white leading-tight">
+                        Concept-Driven Design with Uncompromising Articulation
+                    </h2>
+                    <p class="text-gray-300 font-light leading-relaxed">
+                        At <strong class="text-white font-medium">Projected Rays</strong>, led by award-winning principal architect <strong class="text-luxury-gold font-medium">Ar. Rohan Jain</strong>, every design narrative stems from a profound core concept. We believe that true luxury lies in the rigorous articulation of materials, seamless spatial flow, and exquisite detailing.
+                    </p>
+                    <p class="text-gray-300 font-light leading-relaxed">
+                        From monumental residential villas to sophisticated commercial workspaces, our design ethos harmonizes modern architectural pragmatism with emotive, bespoke interiors tailored to the discerning lifestyle.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-luxury-gold/20 flex items-center justify-center text-luxury-gold flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Material Honesty</h4>
+                                <p class="text-xs text-gray-400 mt-1">Authentic textures like raw timber, brushed brass, and natural stone.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-luxury-gold/20 flex items-center justify-center text-luxury-gold flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Spatial Harmony</h4>
+                                <p class="text-xs text-gray-400 mt-1">Intuitive layouts that maximize light, ventilation, and flow.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-luxury-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-800 rounded-full border border-luxury-gold/20">Our Expertise</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-4 mb-4">Comprehensive Design Solutions</h2>
+                <p class="text-gray-400 font-light">We offer end-to-end architectural and interior design services executed with absolute precision and unmatched creative flair.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Architecture Design</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Visionary building structures, sustainable facades, and holistic structural planning tailored to site topography and client aspiration.
+                    </p>
+                </div>
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Interior Design</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Bespoke interior styling, customized furniture curation, lighting choreography, and atmospheric luxury for high-end living.
+                    </p>
+                </div>
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Spatial Planning</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Optimizing spatial volumes for maximum functionality, ergonomic ease, privacy transitions, and breathtaking sightlines.
+                    </p>
+                </div>
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Material Curation</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Handpicking rare marbles, fine veneers, artisanal metals, and exquisite textiles that elevate tactile and visual richness.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 bg-luxury-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-700 rounded-full border border-luxury-gold/20">Featured Works</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-4">Architectural Portfolio</h2>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-luxury-gold text-black transition duration-300" data-filter="all">All Projects</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-luxury-700 text-gray-300 hover:bg-luxury-600 transition duration-300" data-filter="residential">Residential</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-luxury-700 text-gray-300 hover:bg-luxury-600 transition duration-300" data-filter="interior">Interiors</button>
+                    <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-luxury-700 text-gray-300 hover:bg-luxury-600 transition duration-300" data-filter="commercial">Commercial</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Item 1 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer" data-category="residential" onclick="openLightbox('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80', 'The Obsidian Villa', 'Luxury Residential Architecture - Pune')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Villa" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 absolute bottom-0 left-0 right-0 z-10">
+                        <span class="text-luxury-gold text-xs font-semibold uppercase tracking-widest">Residential Architecture</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">The Obsidian Villa</h3>
+                        <p class="text-xs text-gray-300 mt-1">A monolithic concrete and glass sanctuary.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer" data-category="interior" onclick="openLightbox('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80', 'Aurelia Penthouse Interiors', 'Bespoke Luxury Interior Design')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 absolute bottom-0 left-0 right-0 z-10">
+                        <span class="text-luxury-gold text-xs font-semibold uppercase tracking-widest">Interior Design</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">Aurelia Penthouse</h3>
+                        <p class="text-xs text-gray-300 mt-1">Articulated brass accents and warm walnut timber.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer" data-category="commercial" onclick="openLightbox('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', 'Apex Corporate Headquarters', 'Modern Commercial Architecture')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Office" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 absolute bottom-0 left-0 right-0 z-10">
+                        <span class="text-luxury-gold text-xs font-semibold uppercase tracking-widest">Commercial</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">Apex Headquarters</h3>
+                        <p class="text-xs text-gray-300 mt-1">Ergonomic workspaces fostering collaborative brilliance.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer" data-category="residential" onclick="openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80', 'The Minimalist Courtyard House', 'Residential Architecture')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="House" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 absolute bottom-0 left-0 right-0 z-10">
+                        <span class="text-luxury-gold text-xs font-semibold uppercase tracking-widest">Residential Architecture</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">Courtyard Sanctuary</h3>
+                        <p class="text-xs text-gray-300 mt-1">Seamless blending of indoor greenery and living spaces.</p>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer" data-category="interior" onclick="openLightbox('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80', 'Serene Haven Living Room', 'Interior Styling')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Living" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 absolute bottom-0 left-0 right-0 z-10">
+                        <span class="text-luxury-gold text-xs font-semibold uppercase tracking-widest">Interior Design</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">Serene Haven Lounge</h3>
+                        <p class="text-xs text-gray-300 mt-1">Custom Italian leather seating and ambient lighting.</p>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden glass-card cursor-pointer" data-category="commercial" onclick="openLightbox('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80', 'Lumina Art Gallery & Café', 'Commercial Interior')">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="Gallery" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-900 via-transparent to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 absolute bottom-0 left-0 right-0 z-10">
+                        <span class="text-luxury-gold text-xs font-semibold uppercase tracking-widest">Commercial</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">Lumina Art Gallery</h3>
+                        <p class="text-xs text-gray-300 mt-1">Dramatic track lighting and polished terrazzo flooring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="py-24 bg-luxury-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-800 rounded-full border border-luxury-gold/20">The Projected Rays Advantage</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-4 mb-4">Why Clients Trust Us</h2>
+                <p class="text-gray-400 font-light">We combine uncompromising design excellence with disciplined project execution.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Concept-Driven Philosophy</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Every line we draw and material we select is anchored in a deep conceptual narrative that reflects your unique personality.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6">
+                        <i class="fa-solid fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Masterful Articulation</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Unmatched precision in joinery, material transitions, lighting detailing, and spatial planning for flawless execution.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-2xl mb-6">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Award-Winning Leadership</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        Direct oversight by Ar. Rohan Jain, ensuring your project meets elite international design and construction benchmarks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-luxury-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-700 rounded-full border border-luxury-gold/20">Client Testimonials</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-4 mb-4">Words From Our Patrons</h2>
+                <p class="text-gray-400 font-light">Hear what discerning homeowners and corporate leaders say about working with Projected Rays.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-luxury-gold mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm font-light leading-relaxed italic mb-6">
+                            "Ar. Rohan Jain transformed our empty villa into an absolute masterpiece. Their attention to material textures and lighting created a home that feels both luxurious and deeply soulful."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <div class="w-12 h-12 rounded-full bg-luxury-gold/20 flex items-center justify-center text-luxury-gold font-serif font-bold text-lg">
+                            VS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Vikram Singhania</h4>
+                            <p class="text-xs text-luxury-gold">Industrialist, Pune</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-luxury-gold mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm font-light leading-relaxed italic mb-6">
+                            "Working with Projected Rays was seamless. Their concept-driven approach meant every corner had a purpose. Our office clients are continually awestruck by the interior articulation."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <div class="w-12 h-12 rounded-full bg-luxury-gold/20 flex items-center justify-center text-luxury-gold font-serif font-bold text-lg">
+                            AN
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Ananya Nair</h4>
+                            <p class="text-xs text-luxury-gold">Tech Founder, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-luxury-gold mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm font-light leading-relaxed italic mb-6">
+                            "The level of professionalism and design creativity at Projected Rays is world-class. Ar. Rohan Jain is a visionary who listens intently and delivers beyond expectations."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <div class="w-12 h-12 rounded-full bg-luxury-gold/20 flex items-center justify-center text-luxury-gold font-serif font-bold text-lg">
+                            RK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Rajeev Kapoor</h4>
+                            <p class="text-xs text-luxury-gold">Real Estate Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-luxury-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-800 rounded-full border border-luxury-gold/20">Got Questions?</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-4 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-400 font-light">Everything you need to know about initiating a project with Projected Rays.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-serif font-bold text-lg text-white hover:text-luxury-gold transition duration-200">
+                        <span>How does the design process begin at Projected Rays?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-luxury-gold"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-300 text-sm font-light leading-relaxed">
+                        We begin with an in-depth consultation to understand your lifestyle, aesthetic preferences, and spatial requirements. Ar. Rohan Jain then personally formulates a core design concept and initial mood boards before moving to detailed 3D rendering and architectural planning.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-serif font-bold text-lg text-white hover:text-luxury-gold transition duration-200">
+                        <span>Do you handle turnkey interior execution?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-luxury-gold"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-300 text-sm font-light leading-relaxed">
+                        Yes, we offer comprehensive turnkey solutions from initial concept to final execution, including civil work, custom furniture manufacturing, lighting integration, and styling.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-serif font-bold text-lg text-white hover:text-luxury-gold transition duration-200">
+                        <span>What is the typical timeline for an architectural project?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-luxury-gold"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-300 text-sm font-light leading-relaxed">
+                        Timelines vary depending on scale and complexity. Residential architectural planning typically takes 6 to 12 weeks for design approval, followed by execution timelines determined during scoping.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-serif font-bold text-lg text-white hover:text-luxury-gold transition duration-200">
+                        <span>How can I schedule a consultation with Ar. Rohan Jain?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-luxury-gold"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-300 text-sm font-light leading-relaxed">
+                        You can directly call us at +91 98888 85237, send a WhatsApp message using the floating button, or fill out the consultation form below.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-luxury-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-luxury-gold text-xs font-semibold tracking-widest uppercase px-3 py-1 bg-luxury-700 rounded-full border border-luxury-gold/20">Get In Touch</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Let's Create Your Masterpiece</h2>
+                    <p class="text-gray-300 font-light leading-relaxed">
+                        Ready to elevate your space into architectural art? Reach out to our studio today for a personal consultation with Ar. Rohan Jain.
+                    </p>
+
+                    <div class="space-y-6 pt-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Direct Line</h4>
+                                <a href="tel:9888885237" class="text-luxury-gold hover:underline font-medium">+91 98888 85237</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Email Address</h4>
+                                <a href="mailto:contact@projectedrays.com" class="text-gray-300 hover:text-luxury-gold transition duration-200">contact@projectedrays.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-luxury-gold/10 flex items-center justify-center text-luxury-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Studio Headquarters</h4>
+                                <p class="text-gray-300 text-sm">Design District, Architectural Wing, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-8 sm:p-12 rounded-2xl shadow-2xl border border-luxury-gold/20">
+                        <h3 class="text-2xl font-serif font-bold text-white mb-6">Schedule a Consultation</h3>
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Your Name</label>
+                                    <input type="text" id="name" required class="w-full bg-luxury-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-luxury-gold transition duration-200" placeholder="Vikram Singhania">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" required class="w-full bg-luxury-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-luxury-gold transition duration-200" placeholder="+91 98765 43210">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Project Type</label>
+                                <select id="project-type" class="w-full bg-luxury-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-luxury-gold transition duration-200">
+                                    <option>Residential Architecture</option>
+                                    <option>Luxury Interior Design</option>
+                                    <option>Commercial Space</option>
+                                    <option>Spatial Planning & Material Curation</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Project Details & Vision</label>
+                                <textarea id="message" rows="4" required class="w-full bg-luxury-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-luxury-gold transition duration-200" placeholder="Describe your plot size, location, and aesthetic vision..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 rounded-xl gold-gradient-bg text-black font-bold uppercase tracking-wider text-sm shadow-xl hover:opacity-90 transition duration-300">
+                                Submit Consultation Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-luxury-950 border-t border-white/10 py-16 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full border border-luxury-gold flex items-center justify-center bg-luxury-800 text-luxury-gold font-serif font-bold text-xl">
+                            PR
+                        </div>
+                        <span class="text-2xl font-serif font-bold text-white tracking-wider">PROJECTED RAYS</span>
+                    </div>
+                    <p class="text-gray-400 max-w-md font-light">
+                        An award-winning architecture and interior design firm founded by Ar. Rohan Jain. Concept-driven design defined by meticulous material articulation and refined luxury.
+                    </p>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-luxury-800 border border-white/10 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-black transition duration-300">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full bg-luxury-800 border border-white/10 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-black transition duration-300">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" class="w-10 h-10 rounded-full bg-luxury-800 border border-white/10 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-black transition duration-300">
+                            <i class="fa-brands fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-base mb-4 tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 font-light">
+                        <li><a href="#about" class="hover:text-luxury-gold transition duration-200">About Us</a></li>
+                        <li><a href="#services" class="hover:text-luxury-gold transition duration-200">Our Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-luxury-gold transition duration-200">Portfolio Gallery</a></li>
+                        <li><a href="#why-us" class="hover:text-luxury-gold transition duration-200">Why Choose Us</a></li>
+                        <li><a href="#contact" class="hover:text-luxury-gold transition duration-200">Contact Studio</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-base mb-4 tracking-wider">Contact Info</h4>
+                    <ul class="space-y-3 font-light">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-luxury-gold"></i>
+                            <a href="tel:9888885237" class="hover:text-luxury-gold">+91 98888 85237</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-instagram text-luxury-gold"></i>
+                            <a href="https://instagram.com" target="_blank" class="hover:text-luxury-gold">@projectedrays</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-luxury-gold mt-1"></i>
+                            <span>Design District, Architectural Wing, India</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-light">
+                <p>&copy; 2026 Projected Rays. Founded by Ar. Rohan Jain. All rights reserved.</p>
+                <p class="mt-4 sm:mt-0">Crafted with Luxury & Precision</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <a href="https://wa.me/919888885237?text=Hello%20Projected%20Rays,%20I%20would%20like%20to%20discuss%20an%20architecture/interior%20project." target="_blank" class="relative group w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition duration-300" title="Chat on WhatsApp">
+            <span class="absolute -inset-1 rounded-full bg-emerald-400 opacity-75 floating-pulse -z-10"></span>
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:9888885237" class="relative group w-14 h-14 rounded-full gold-gradient-bg text-black flex items-center justify-center text-xl shadow-2xl hover:scale-110 transition duration-300" title="Call Us">
+            <span class="absolute -inset-1 rounded-full bg-luxury-gold opacity-50 floating-pulse -z-10"></span>
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-luxury-gold p-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full text-center">
+            <img id="lightbox-img" src="" alt="Project Preview" class="max-h-[75vh] mx-auto rounded-xl border border-luxury-gold/30 shadow-2xl mb-4">
+            <h3 id="lightbox-title" class="text-2xl font-serif font-bold text-white"></h3>
+            <p id="lightbox-desc" class="text-sm text-luxury-gold mt-1"></p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Portfolio Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-luxury-gold', 'text-black');
+                    b.classList.add('bg-luxury-700', 'text-gray-300');
+                });
+                btn.classList.remove('bg-luxury-700', 'text-gray-300');
+                btn.classList.add('bg-luxury-gold', 'text-black');
+
+                const filter = btn.getAttribute('data-filter');
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox Functions
+        function openLightbox(src, title, desc) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const titleEl = document.getElementById('lightbox-title');
+            const descEl = document.getElementById('lightbox-desc');
+
+            img.src = src;
+            titleEl.textContent = title;
+            descEl.textContent = desc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // FAQ Accordion
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('fa-chevron-down');
+                
+                // Toggle current
+                content.classList.toggle('hidden');
+                btn.classList.toggle('text-luxury-gold');
+            });
+        });
+
+        // Contact Form Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const projectType = document.getElementById('project-type').value;
+            
+            // Custom toast notification instead of alert()
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-luxury-gold text-black px-6 py-3 rounded-full font-bold shadow-2xl z-50 transition duration-300';
+            toast.textContent = `Thank you ${name}! Ar. Rohan Jain's studio will contact you shortly.`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+                document.getElementById('contact-form').reset();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
